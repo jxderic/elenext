@@ -110,7 +110,7 @@ export default defineComponent({
     const { teleportId, referenceRef } = usePopper('ElPopover', {
       placement: props.placement as PlacementType,
       trigger: props.trigger as 'click' | 'hover',
-      modifiers: {},
+      modifiers: [],
       class: ['el-popover', 'el-popper', props.popperClass, props.content && 'el-popover--plain'],
       width: props.width + 'px'
     });
