@@ -24,7 +24,7 @@ import {
   isReactive
 } from 'vue';
 
-import { usePopper, PlacementType } from './hooks';
+import { usePopper, PlacementType } from '../../hooks/usePopper';
 
 const PopoverReference = defineComponent({
   props: {
@@ -36,7 +36,6 @@ const PopoverReference = defineComponent({
   setup(props, { slots }) {
     const children = slots.default ? slots.default() : [];
     const child = children?.[0]?.children?.[0];
-    console.log(child);
 
     return () => {
       const mergeChild = cloneVNode(child, {
@@ -110,7 +109,14 @@ export default defineComponent({
     const { teleportId, referenceRef } = usePopper('ElPopover', {
       placement: props.placement as PlacementType,
       trigger: props.trigger as 'click' | 'hover',
-      modifiers: [],
+      modifiers: [
+        {
+          name: 'offset',
+          options: {
+            offset: [0, 8]
+          }
+        }
+      ],
       class: ['el-popover', 'el-popper', props.popperClass, props.content && 'el-popover--plain'],
       width: props.width + 'px'
     });
@@ -121,8 +127,6 @@ export default defineComponent({
       })
     );
     const setupRef = (el: Element) => {
-      console.log(el);
-
       referenceRef.value = el;
     };
     return {

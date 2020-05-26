@@ -2,8 +2,8 @@
   <li
     :class="{
       'el-submenu': true,
-      'is-active': isActive,
-      'is-opened': opened,
+      'is-active': state.isActive,
+      'is-opened': state.isOpen,
       'is-disabled': disabled
     }"
     role="menuitem"
@@ -14,20 +14,20 @@
     <div
       ref="submenuTitleRef"
       class="el-submenu__title"
-      :style="[paddingStyle, titleStyle, { backgroundColor }]"
+      :style="[state.style]"
       @click="handleClick"
       @mouseenter="handleTitleMouseenter"
       @mouseleave="handleTitleMouseleave"
     >
       <slot name="title"></slot>
-      <i :class="['el-submenu__icon-arrow', submenuTitleIcon]"></i>
+      <i :class="['el-submenu__icon-arrow', state.icon]"></i>
     </div>
-    <template v-if="isMenuPopup">
+    <template v-if="isPopup">
       <teleport :to="`#${teleportId}`">
         <ul
           role="menu"
-          :class="`el-menu el-menu--popup el-menu--popup-${currentPlacement}`"
-          :style="{ backgroundColor: backgroundColor || '' }"
+          :class="`el-menu el-menu--popup el-menu--popup-${state.placement}`"
+          :style="{ backgroundColor: state.style.backgroundColor }"
         >
           <slot></slot>
         </ul>
@@ -35,10 +35,10 @@
     </template>
     <template v-else>
       <ul
-        v-show="opened"
+        v-show="state.isOpen"
         role="menu"
         class="el-menu el-menu--inline"
-        :style="{ backgroundColor: backgroundColor || '' }"
+        :style="{ backgroundColor: state.style.backgroundColor }"
       >
         <slot></slot>
       </ul>
@@ -46,133 +46,77 @@
   </li>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, computed, provide, ref } from 'vue';
-import { usePopper } from '../ElPopover';
-import { useElMenu } from './provides';
+import { defineComponent, watch } from 'vue';
+import { usePopper } from '../../hooks/usePopper';
+import { useElSubMenu } from './provides';
 
 export default defineComponent({
   name: 'ElSubmenu',
   props: {
-    index: {
-      type: String,
-      required: true
-    },
-    showTimeout: {
-      type: Number,
-      default: 300
-    },
-    hideTimeout: {
-      type: Number,
-      default: 300
-    },
     disabled: { type: Boolean, default: false },
-    popperClass: { type: String, default: '' },
-    popperAppendToBody: {
-      type: Boolean,
-      default: undefined
-    }
+    popperClass: { type: String, default: '' }
   },
-  setup(props, { slots }) {
-    const { rootMenu, parentMenu, parentKey, paddingStyle } = useElMenu();
-    const { teleportId, referenceRef: submenuTitleRef } = usePopper('ElMenuPopover', {
-      placement: parentMenu.isRoot ? 'bottom-start' : 'right-start',
-      trigger: 'click',
-      modifiers: [{ name: 'offset', options: { offset: [0, 0] } }],
-      class: ['el-popper', `el-menu--${rootMenu.mode}`, props.popperClass]
+  setup(props) {
+    const { root, parent, state } = useElSubMenu();
+    const { referenceRef: submenuTitleRef, teleportId, show, hide } = usePopper('ElMenuPopover', {
+      placement: parent.isRoot.value ? 'bottom-start' : 'right-start',
+      modifiers: [{ name: 'offset', options: { offset: parent.isRoot.value ? [0, 0] : [0, 4] } }],
+      class: ['el-popper', `el-menu--${root.state.mode}`, props.popperClass]
     });
-    const id = Symbol('ElSubmenu');
-    const state = reactive({
-      submenus: [],
-      items: []
-    });
-    provide(parentKey, {
-      items: state.items,
-      deep: parentMenu.deep + 1,
-      isRoot: false
-    });
-
-    const isActive = computed(() => {
-      return state.items.some(item => item.isActive) || state.submenus.some(item => item.isActive);
-    });
-    const opened = computed(() => {
-      return rootMenu.openedMenus.includes(id);
-    });
-    const titleStyle = computed(() => {
-      if (rootMenu.mode !== 'horizontal') {
-        return {
-          color: rootMenu.textColor || ''
-        };
+    watch(state.isOpen, value => {
+      if (value) {
+        show();
+      } else {
+        hide();
       }
-      return {
-        borderBottomColor: isActive.value ? rootMenu.activeTextColor : 'transparent',
-        color: isActive.value ? rootMenu.activeTextColor : rootMenu.textColor
-      };
     });
-
-    const submenuTitleIcon =
-      (rootMenu.mode === 'horizontal' && parentMenu.isRoot) || (rootMenu.mode === 'vertical' && !rootMenu.collapse)
-        ? 'el-icon-arrow-down'
-        : 'el-icon-arrow-right';
-
-    const currentPlacement = computed(() => {
-      return rootMenu.mode === 'horizontal' && parentMenu.isRoot ? 'bottom-start' : 'right-start';
-    });
-
     const handleClick = () => {
       if (
-        (rootMenu.menuTrigger === 'hover' && rootMenu.mode === 'horizontal') ||
-        (rootMenu.collapse && rootMenu.mode === 'vertical') ||
+        (root.state.trigger === 'hover' && root.state.mode === 'horizontal') ||
+        (root.state.collapse && root.state.mode === 'vertical') ||
         props.disabled
       ) {
         return;
       }
-      if (rootMenu.openedMenus.indexOf(id) >= 0) {
-        rootMenu.closeMenu(id);
+      if (state.isOpen.value) {
+        root.close(state.id.value);
       } else {
-        rootMenu.openMenu(id);
+        root.open(state.id.value);
       }
     };
 
     const handleMouseenter = () => {
       if (
-        (rootMenu.menuTrigger === 'click' && rootMenu.mode === 'horizontal') ||
-        (!rootMenu.collapse && rootMenu.mode === 'vertical') ||
+        (root.state.trigger === 'click' && root.state.mode === 'horizontal') ||
+        (!root.state.collapse && root.state.mode === 'vertical') ||
         props.disabled
       ) {
         return;
       }
-      rootMenu.openMenu(id);
+      root.open(state.id.value);
     };
     const handleMouseleave = () => {
       if (
-        (rootMenu.menuTrigger === 'click' && rootMenu.mode === 'horizontal') ||
-        (!rootMenu.collapse && rootMenu.mode === 'vertical')
+        (root.state.trigger === 'click' && root.state.mode === 'horizontal') ||
+        (!root.state.collapse && root.state.mode === 'vertical')
       ) {
         return;
       }
-      rootMenu.closeMenu(id);
+      root.close(state.id.value);
     };
 
     const handleTitleMouseenter = () => {
-      if (rootMenu.mode === 'horizontal' && !rootMenu.backgroundColor) return;
-      // submenuTitleRef.value && (submenuTitleRef.value.style.backgroundColor = rootMenu.hoverBackground);
+      if (root.state.mode === 'horizontal' && !root.state.backgroundColor) return;
+      // submenuTitleRef.value && (submenuTitleRef.value.style.backgroundColor = root.hoverBackground);
     };
     const handleTitleMouseleave = () => {
-      if (rootMenu.mode === 'horizontal' && !rootMenu.backgroundColor) return;
-      submenuTitleRef.value && (submenuTitleRef.value.style.backgroundColor = rootMenu.backgroundColor || '');
+      if (root.state.mode === 'horizontal' && !root.state.backgroundColor) return;
+      submenuTitleRef.value && (submenuTitleRef.value.style.backgroundColor = root.state.backgroundColor || '');
     };
-
     return {
       teleportId,
-      mode: rootMenu.mode,
-      opened: opened,
-      isMenuPopup: rootMenu.isMenuPopup,
-      isActive,
-      titleStyle,
-      paddingStyle,
-      currentPlacement,
-      submenuTitleIcon,
-      backgroundColor: rootMenu.backgroundColor,
+      state,
+      isPopup: root.state.isPopup,
       handleClick,
       handleMouseenter,
       handleMouseleave,
