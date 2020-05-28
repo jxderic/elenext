@@ -36,5 +36,22 @@
       ""
     ],
     "description": "Vue SFC"
+  },
+  "Vue Preview": {
+    "scope": "vue-html",
+    "prefix": "preview",
+    "body": [
+      "<Preview title=\"\">",
+      "  <div>",
+      "  </div>",
+      "  <template #template>",
+      "    {{ `",
+      "    <div>",
+      "    </div>",
+      "    ` }}",
+      "  </template>",
+      "</Preview>"
+    ],
+    "description": "Vue SFC"
   }
 }

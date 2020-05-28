@@ -1,26 +1,37 @@
 <template>
   <div class="demo-icon">
     <h1>Icon 图标</h1>
-    <h2>使用方法</h2>
-    <el-icon name="edit"></el-icon>
-    <el-icon name="share"></el-icon>
-    <el-icon name="delete"></el-icon>
-    <el-button type="primary" icon="el-icon-search">搜索</el-button>
-    <h2>图标集合</h2>
-    <ul class="icon-list">
-      <li v-for="name in icons" :key="name">
-        <span>
-          <i :class="'el-icon-' + name"></i>
-          <span class="icon-name">{{'el-icon-' + name}}</span>
-        </span>
-      </li>
-    </ul>
+    <Preview title="使用方法">
+      <el-icon name="edit"></el-icon>
+      <el-icon name="share"></el-icon>
+      <el-icon name="delete"></el-icon>
+      <el-button type="primary" icon="el-icon-search">搜索</el-button>
+      <template #template>
+        {{`
+        <el-icon name="edit"></el-icon>
+        <el-icon name="share"></el-icon>
+        <el-icon name="delete"></el-icon>
+        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+        `}}
+      </template>
+    </Preview>
+    <Preview title="图标集合">
+      <div class="icon-list">
+        <div v-for="name in icons" :key="name" class="icon-list__item">
+          <span>
+            <i :class="'el-icon-' + name"></i>
+            <span class="icon-name">{{ 'el-icon-' + name }}</span>
+          </span>
+        </div>
+      </div>
+    </Preview>
   </div>
 </template>
 
 <script lang="ts">
-import { ElIcon, ElButton } from '@/index';
 import { defineComponent } from 'vue';
+import Preview from '../components/Preview.vue';
+import { ElIcon, ElButton } from '@/index';
 const icons = [
   'platform-eleme',
   'eleme',
@@ -304,7 +315,7 @@ const icons = [
   'ice-cream-round'
 ];
 export default defineComponent({
-  components: { ElIcon, ElButton },
+  components: { ElIcon, ElButton, Preview },
   setup() {
     return {
       icons
@@ -320,25 +331,28 @@ export default defineComponent({
     font-size: 1.5em;
     vertical-align: middle;
   }
-  ul.icon-list {
+  .preview__demo {
     overflow: hidden;
+  }
+  .icon-list {
+    display: grid;
+    margin: -20px;
+    grid-template-columns: repeat(5, 20%);
     list-style: none;
     padding: 0 !important;
-    border: solid 1px #eaeefb;
+    // border: solid 1px #eaeefb;
+    background-color: #eaeefb;
+    gap: 1px;
     border-radius: 4px;
+    place-content: center center;
   }
-  .icon-list li {
-    float: left;
-    width: 16.66%;
+  .icon-list__item {
+    // width: 100%;
+    background-color: #fff;
     text-align: center;
     height: 120px;
-    line-height: 120px;
     color: #666;
     font-size: 13px;
-    border-right: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    margin-right: -1px;
-    margin-bottom: -1px;
 
     &::after {
       display: inline-block;

@@ -1,5 +1,5 @@
-import { d as defineComponent, i as index, l as index$1, E as ElMenu, z as ElMenuItem, A as script$8, B as ElMenuItemGroup, r as resolveComponent, c as createBlock, b as createVNode, w as withCtx, F as Fragment, o as openBlock, e as createTextVNode, _ as _toDisplayString } from './index.48c3ecc7.js';
-import { s as script$1 } from './Preview.2c03b2a7.js';
+import { d as defineComponent, i as index, l as index$1, E as ElMenu, z as ElMenuItem, A as script$8, B as ElMenuItemGroup, r as resolveComponent, c as createBlock, b as createVNode, w as withCtx, F as Fragment, o as openBlock, e as createTextVNode, _ as _toDisplayString } from './index.f9e62f49.js';
+import { s as script$1 } from './Preview.6ebac9db.js';
 
 var script = defineComponent({
   components: {
@@ -29,8 +29,8 @@ const _hoisted_10 = /*#__PURE__*/createTextVNode("消息中心");
 const _hoisted_11 = /*#__PURE__*/createVNode("a", {
   href: "https://www.ele.me",
   target: "_blank"
-}, "订单管理", -1 /* HOISTED */);
-const _hoisted_12 = /*#__PURE__*/createVNode("div", { class: "line" }, null, -1 /* HOISTED */);
+}, "订单管理", -1);
+const _hoisted_12 = /*#__PURE__*/createVNode("div", { class: "line" }, null, -1);
 const _hoisted_13 = /*#__PURE__*/createTextVNode("处理中心");
 const _hoisted_14 = /*#__PURE__*/createTextVNode("我的工作台");
 const _hoisted_15 = /*#__PURE__*/createTextVNode("选项1");
@@ -44,7 +44,7 @@ const _hoisted_22 = /*#__PURE__*/createTextVNode("消息中心");
 const _hoisted_23 = /*#__PURE__*/createVNode("a", {
   href: "https://www.ele.me",
   target: "_blank"
-}, "订单管理", -1 /* HOISTED */);
+}, "订单管理", -1);
 const _hoisted_24 = /*#__PURE__*/createTextVNode(/*#__PURE__*/_toDisplayString(`
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
         <el-menu-item index="1">处理中心</el-menu-item>
@@ -90,36 +90,36 @@ const _hoisted_24 = /*#__PURE__*/createTextVNode(/*#__PURE__*/_toDisplayString(`
         <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
       </el-menu>
       `), 1 /* TEXT */);
-const _hoisted_25 = /*#__PURE__*/createVNode("h5", null, "默认颜色", -1 /* HOISTED */);
-const _hoisted_26 = /*#__PURE__*/createVNode("i", { class: "el-icon-location" }, null, -1 /* HOISTED */);
-const _hoisted_27 = /*#__PURE__*/createVNode("span", null, "导航一", -1 /* HOISTED */);
+const _hoisted_25 = /*#__PURE__*/createVNode("h5", null, "默认颜色", -1);
+const _hoisted_26 = /*#__PURE__*/createVNode("i", { class: "el-icon-location" }, null, -1);
+const _hoisted_27 = /*#__PURE__*/createVNode("span", null, "导航一", -1);
 const _hoisted_28 = /*#__PURE__*/createTextVNode("分组一");
 const _hoisted_29 = /*#__PURE__*/createTextVNode("选项1");
 const _hoisted_30 = /*#__PURE__*/createTextVNode("选项2");
 const _hoisted_31 = /*#__PURE__*/createTextVNode("选项3");
 const _hoisted_32 = /*#__PURE__*/createTextVNode("选项4");
 const _hoisted_33 = /*#__PURE__*/createTextVNode("选项1");
-const _hoisted_34 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
-const _hoisted_35 = /*#__PURE__*/createVNode("span", null, "导航二", -1 /* HOISTED */);
-const _hoisted_36 = /*#__PURE__*/createVNode("i", { class: "el-icon-document" }, null, -1 /* HOISTED */);
-const _hoisted_37 = /*#__PURE__*/createVNode("span", null, "导航三", -1 /* HOISTED */);
-const _hoisted_38 = /*#__PURE__*/createVNode("i", { class: "el-icon-setting" }, null, -1 /* HOISTED */);
-const _hoisted_39 = /*#__PURE__*/createVNode("span", null, "导航四", -1 /* HOISTED */);
-const _hoisted_40 = /*#__PURE__*/createVNode("h5", null, "自定义颜色", -1 /* HOISTED */);
-const _hoisted_41 = /*#__PURE__*/createVNode("i", { class: "el-icon-location" }, null, -1 /* HOISTED */);
-const _hoisted_42 = /*#__PURE__*/createVNode("span", null, "导航一", -1 /* HOISTED */);
+const _hoisted_34 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
+const _hoisted_35 = /*#__PURE__*/createVNode("span", null, "导航二", -1);
+const _hoisted_36 = /*#__PURE__*/createVNode("i", { class: "el-icon-document" }, null, -1);
+const _hoisted_37 = /*#__PURE__*/createVNode("span", null, "导航三", -1);
+const _hoisted_38 = /*#__PURE__*/createVNode("i", { class: "el-icon-setting" }, null, -1);
+const _hoisted_39 = /*#__PURE__*/createVNode("span", null, "导航四", -1);
+const _hoisted_40 = /*#__PURE__*/createVNode("h5", null, "自定义颜色", -1);
+const _hoisted_41 = /*#__PURE__*/createVNode("i", { class: "el-icon-location" }, null, -1);
+const _hoisted_42 = /*#__PURE__*/createVNode("span", null, "导航一", -1);
 const _hoisted_43 = /*#__PURE__*/createTextVNode("分组一");
 const _hoisted_44 = /*#__PURE__*/createTextVNode("选项1");
 const _hoisted_45 = /*#__PURE__*/createTextVNode("选项2");
 const _hoisted_46 = /*#__PURE__*/createTextVNode("选项3");
 const _hoisted_47 = /*#__PURE__*/createTextVNode("选项4");
 const _hoisted_48 = /*#__PURE__*/createTextVNode("选项1");
-const _hoisted_49 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
-const _hoisted_50 = /*#__PURE__*/createVNode("span", null, "导航二", -1 /* HOISTED */);
-const _hoisted_51 = /*#__PURE__*/createVNode("i", { class: "el-icon-document" }, null, -1 /* HOISTED */);
-const _hoisted_52 = /*#__PURE__*/createVNode("span", null, "导航三", -1 /* HOISTED */);
-const _hoisted_53 = /*#__PURE__*/createVNode("i", { class: "el-icon-setting" }, null, -1 /* HOISTED */);
-const _hoisted_54 = /*#__PURE__*/createVNode("span", null, "导航四", -1 /* HOISTED */);
+const _hoisted_49 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
+const _hoisted_50 = /*#__PURE__*/createVNode("span", null, "导航二", -1);
+const _hoisted_51 = /*#__PURE__*/createVNode("i", { class: "el-icon-document" }, null, -1);
+const _hoisted_52 = /*#__PURE__*/createVNode("span", null, "导航三", -1);
+const _hoisted_53 = /*#__PURE__*/createVNode("i", { class: "el-icon-setting" }, null, -1);
+const _hoisted_54 = /*#__PURE__*/createVNode("span", null, "导航四", -1);
 
 function render(_ctx, _cache) {
   const _component_el_menu_item = resolveComponent("el-menu-item");
