@@ -1,5 +1,5 @@
-import { d as defineComponent, a as script$5, C as script$9, r as resolveComponent, c as createBlock, b as createVNode, w as withCtx, F as Fragment, o as openBlock, e as createTextVNode, _ as _toDisplayString } from './index.48c3ecc7.js';
-import { s as script$1 } from './Preview.2c03b2a7.js';
+import { d as defineComponent, a as script$5, C as script$9, r as resolveComponent, c as createBlock, b as createVNode, w as withCtx, F as Fragment, o as openBlock, e as createTextVNode, _ as _toDisplayString } from './index.d883ae59.js';
+import { s as script$1 } from './Preview.722edb7d.js';
 
 var script = defineComponent({
   components: {
@@ -9,11 +9,10 @@ var script = defineComponent({
   }
 });
 
-const _hoisted_1 = /*#__PURE__*/createVNode("h1", null, "ElButton", -1 /* HOISTED */);
+const _hoisted_1 = /*#__PURE__*/createVNode("h1", null, "ElPopover", -1 /* HOISTED */);
 const _hoisted_2 = /*#__PURE__*/createTextVNode("hover 激活");
-const _hoisted_3 = /*#__PURE__*/createTextVNode("hover 激活");
-const _hoisted_4 = /*#__PURE__*/createTextVNode("click 激活");
-const _hoisted_5 = /*#__PURE__*/createTextVNode(/*#__PURE__*/_toDisplayString(`
+const _hoisted_3 = /*#__PURE__*/createTextVNode("click 激活");
+const _hoisted_4 = /*#__PURE__*/createTextVNode(/*#__PURE__*/_toDisplayString(`
       <el-popover
         placement="top-start"
         title="标题"
@@ -42,26 +41,9 @@ function render(_ctx, _cache) {
 
   return (openBlock(), createBlock(Fragment, null, [
     _hoisted_1,
-    createVNode(_component_el_popover, {
-      placement: "top-start",
-      title: "标题",
-      width: "200",
-      trigger: "hover",
-      content: "这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
-    }, {
-      reference: withCtx(() => [
-        createVNode(_component_el_button, null, {
-          default: withCtx(() => [
-            _hoisted_2
-          ]),
-          _: 1
-        })
-      ]),
-      _: 1
-    }),
     createVNode(_component_Preview, { title: "不同尺寸" }, {
       template: withCtx(() => [
-        _hoisted_5
+        _hoisted_4
       ]),
       default: withCtx(() => [
         createVNode(_component_el_popover, {
@@ -74,7 +56,7 @@ function render(_ctx, _cache) {
           reference: withCtx(() => [
             createVNode(_component_el_button, null, {
               default: withCtx(() => [
-                _hoisted_3
+                _hoisted_2
               ]),
               _: 1
             })
@@ -91,7 +73,7 @@ function render(_ctx, _cache) {
           reference: withCtx(() => [
             createVNode(_component_el_button, null, {
               default: withCtx(() => [
-                _hoisted_4
+                _hoisted_3
               ]),
               _: 1
             })
