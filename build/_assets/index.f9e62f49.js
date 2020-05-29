@@ -7020,13 +7020,13 @@ const _hoisted_2 = /*#__PURE__*/createVNode("img", {
   style: {"width":"80px","height":"80px"},
   alt: "Vue logo",
   src: _imports_0
-}, null, -1 /* HOISTED */);
+}, null, -1);
 popScopeId();
 
 const render = /*#__PURE__*/_withId(function render(_ctx, _cache) {
   return (openBlock(), createBlock("div", _hoisted_1, [
     _hoisted_2,
-    createVNode("h1", null, _toDisplayString(_ctx.msg), 1 /* TEXT */)
+    createVNode("h1", null, _toDisplayString(_ctx.msg), 1)
   ]))
 });
 
@@ -9726,22 +9726,22 @@ var script$a = defineComponent({
 
 const _hoisted_1$4 = { class: "demo-layout" };
 const _hoisted_2$2 = /*#__PURE__*/createTextVNode("Basic");
-const _hoisted_3 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_3 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_4 = /*#__PURE__*/createTextVNode(" layout ");
-const _hoisted_5 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_5 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_6 = /*#__PURE__*/createTextVNode(" container ");
-const _hoisted_7 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_7 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_8 = /*#__PURE__*/createTextVNode(" icon ");
-const _hoisted_9 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_9 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_10 = /*#__PURE__*/createTextVNode(" button ");
 const _hoisted_11 = /*#__PURE__*/createTextVNode("Form");
 const _hoisted_12 = /*#__PURE__*/createTextVNode("Data");
 const _hoisted_13 = /*#__PURE__*/createTextVNode("Notice");
 const _hoisted_14 = /*#__PURE__*/createTextVNode("Navigation");
-const _hoisted_15 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_15 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_16 = /*#__PURE__*/createTextVNode(" menu ");
 const _hoisted_17 = /*#__PURE__*/createTextVNode("Others");
-const _hoisted_18 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1 /* HOISTED */);
+const _hoisted_18 = /*#__PURE__*/createVNode("i", { class: "el-icon-menu" }, null, -1);
 const _hoisted_19 = /*#__PURE__*/createTextVNode(" popover ");
 const _hoisted_20 = /*#__PURE__*/createTextVNode("Hooks");
 
@@ -9906,27 +9906,27 @@ const router = createRouter({
     children: [{
       path: "/button",
       name: "button",
-      component: async () => import('./button.3fdf32a8.js')
+      component: async () => import('./button.79e61b9c.js')
     }, {
       path: "/layout",
       name: "layout",
-      component: async () => import('./layout.ad032fa4.js')
+      component: async () => import('./layout.351b781a.js')
     }, {
       path: "/container",
       name: "container",
-      component: async () => import('./container.0fdaf477.js')
+      component: async () => import('./container.453d4926.js')
     }, {
       path: "/icon",
       name: "icon",
-      component: async () => import('./icon.1666818d.js')
+      component: async () => import('./icon.4c74e00d.js')
     }, {
       path: "/menu",
       name: "menu",
-      component: async () => import('./menu.c46468b5.js')
+      component: async () => import('./menu.56d328d2.js')
     }, {
       path: "/popover",
       name: "popover",
-      component: async () => import('./popover.34358519.js')
+      component: async () => import('./popover.5448c51a.js')
     }]
   }]
 });

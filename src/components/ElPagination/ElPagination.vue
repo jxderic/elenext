@@ -2,25 +2,34 @@
   <div></div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, h, mergeProps } from 'vue';
+
+interface ElPaginationProps {
+  small: boolean;
+  total: number;
+  pageCount: number;
+  pagerCount: number;
+  background: boolean;
+}
 
 export default defineComponent({
   name: '',
   props: {
-    pageSize: {
-      type: Number,
-      default: 10
+    // pageSize: {
+    //   type: Number,
+    //   default: 10
+    // },
+    small: {
+      type: Boolean,
+      default: false
     },
-
-    small: Boolean,
-
     total: {
       type: Number,
       required: false
     },
-
-    pageCount: Number,
-
+    pageCount: {
+      type: Number
+    },
     pagerCount: {
       type: Number,
       validator(value: number) {
@@ -29,37 +38,47 @@ export default defineComponent({
       default: 7
     },
 
-    currentPage: {
-      type: Number,
-      default: 1
-    },
+    // currentPage: {
+    //   type: Number,
+    //   default: 1
+    // },
 
-    layout: {
-      type: String,
-      default: 'prev, pager, next, jumper, ->, total'
-    },
+    // layout: {
+    //   type: String,
+    //   default: 'prev, pager, next, jumper, ->, total'
+    // },
 
-    pageSizes: {
-      type: Array,
-      default() {
-        return [10, 20, 30, 40, 50, 100];
-      }
-    },
+    // pageSizes: {
+    //   type: Array,
+    //   default() {
+    //     return [10, 20, 30, 40, 50, 100];
+    //   }
+    // },
 
-    popperClass: String,
+    // popperClass: String,
 
-    prevText: String,
+    // prevText: String,
 
-    nextText: String,
+    // nextText: String,
 
-    background: Boolean,
+    background: Boolean
 
-    disabled: Boolean,
+    // disabled: Boolean,
 
-    hideOnSinglePage: Boolean
+    // hideOnSinglePage: Boolean
   },
-  setup(props, { attrs, slots, emit }) {
-    return {};
+  setup(props: ElPaginationProps, { attrs, slots, emit }) {
+    return () =>
+      h(
+        'div',
+        mergeProps({
+          class: {
+            'el-pagination': true,
+            'is-background': props.background,
+            'el-pagination--small': props.small
+          }
+        })
+      );
   }
 });
 </script>

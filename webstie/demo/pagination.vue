@@ -21,7 +21,7 @@
   <h2>当只有一页时隐藏分页</h2>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, h, mergeProps } from 'vue';
 
 export default defineComponent({
   name: '',
