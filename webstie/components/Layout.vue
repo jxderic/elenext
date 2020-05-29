@@ -25,6 +25,10 @@
           </el-menu-item-group>
           <el-menu-item-group>
             <template #title>Form</template>
+            <el-menu-item index="1" :path="{ name: 'pagination' }">
+              <i class="el-icon-menu"></i>
+              pagination
+            </el-menu-item>
           </el-menu-item-group>
           <el-menu-item-group>
             <template #title>Data</template>
