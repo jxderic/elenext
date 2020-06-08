@@ -1,7 +1,3 @@
-<template>
-  <div></div>
-</template>
-<script lang="ts">
 import { defineComponent, h, mergeProps } from 'vue';
 
 interface ElPaginationProps {
@@ -81,5 +77,3 @@ export default defineComponent({
       );
   }
 });
-</script>
-<style lang="less"></style>
