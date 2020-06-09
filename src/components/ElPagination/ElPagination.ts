@@ -1,4 +1,4 @@
-import { defineComponent, h, mergeProps } from 'vue';
+import { defineComponent, h, mergeProps, computed, inject } from 'vue';
 
 interface ElPaginationProps {
   pageSize: number;
@@ -16,7 +16,15 @@ interface ElPaginationProps {
   disabled: boolean;
   hideOnSinglePage: boolean;
 }
-
+const Prev = defineComponent((props) => {
+  return h('button', {
+    type: "button",
+    class: "btn-prev",
+    // TODO
+    disabled: {},
+    onClick: {}
+  }, '<span></span>');
+})
 export default defineComponent({
   name: '',
   props: {
@@ -64,7 +72,20 @@ export default defineComponent({
     hideOnSinglePage: Boolean
   },
   setup(props: ElPaginationProps, { attrs, slots, emit }) {
-    return () =>
+    const internalPageSize = 0;
+    const layout = props.layout;
+    const internalPageCount = computed(() => {
+      if (typeof props.total === 'number') {
+        return Math.max(1, Math.ceil(props.total / internalPageSize));
+      } else if (typeof props.pageCount === 'number') {
+        return Math.max(1, props.pageCount);
+      }
+      return null;
+    })
+    const components = layout.split(',').map((item) => item.trim());
+    return () => {
+      if (!layout) return null;
+      if (props.hideOnSinglePage && (!internalPageCount || internalPageCount === 1)) return null;
       h(
         'div',
         mergeProps({
@@ -72,8 +93,9 @@ export default defineComponent({
             'el-pagination': true,
             'is-background': props.background,
             'el-pagination--small': props.small
-          }
+          },
         })
       );
+    }
   }
 });
